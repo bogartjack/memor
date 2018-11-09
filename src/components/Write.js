@@ -31,11 +31,13 @@ class Write extends React.Component {
 
 
     render() {
+	    const quote = fetch('http://quotes.rest/qod.json').then(res=>{
+		    return res.contents.quotes.quote});
         return (
             <div className="container write">
                 <div className="card">
                     <div className="card-content">
-                        <textarea className="materialize-textarea" placeholder="Write down your memo"
+                        <textarea className="materialize-textarea" placeholder={quote}
                         value={this.state.contents}
                         onChange={this.handleChange}></textarea>
                     </div>
